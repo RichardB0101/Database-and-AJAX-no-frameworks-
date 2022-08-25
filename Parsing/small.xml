@@ -1,0 +1,14 @@
+<DESCRIPTEUR LNG="lt" VERSION="4.15">
+    <RECORD>
+        <DESCRIPTEUR_ID>1</DESCRIPTEUR_ID>
+        <LIBELLE>Aarhus (apskritis)</LIBELLE>
+    </RECORD>
+    <RECORD>
+        <DESCRIPTEUR_ID>10</DESCRIPTEUR_ID>
+        <LIBELLE>vidaus prekyba</LIBELLE>
+    </RECORD>
+    <RECORD>
+        <DESCRIPTEUR_ID>100</DESCRIPTEUR_ID>
+        <LIBELLE>rasinis konfliktas</LIBELLE>
+    </RECORD>
+</DESCRIPTEUR>

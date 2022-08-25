@@ -1,0 +1,13 @@
+{
+    "name": "richa/parsing",
+    "require": {
+        "easyrdf/easyrdf": "^1.1",
+        "ext-simplexml": "*",
+        "ext-mysqli": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Richa\\Parsing\\": "src/"
+        }
+    }
+}
