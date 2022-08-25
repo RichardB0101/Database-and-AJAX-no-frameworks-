@@ -29,7 +29,7 @@ $arrayXml = json_decode($jsonXml, TRUE);
 <pre>
     <?php
 
-    //print_r($search);
+    //print_r($arrayXml);
     //var_dump($search);
     ?>
 </pre>
@@ -74,17 +74,26 @@ if(!empty($_SESSION["searchSesh"])){
     $sql = "SELECT * FROM `Eurovoc` WHERE (id = '$source') OR (label = '$source') OR (description = '$source')";
     $result = $conn -> query($sql);
 
-    if(!empty($_SESSION["searchSesh"])) {
-        while ($rows = $result ->fetch_assoc()) {
-            echo "
-            <tr>
-                <td>" . $rows['id'] . "</td>
-                <td>" . $rows['label'] . "</td>
-                <td>" . $rows['description'] . "</td>
-            </tr>      
-            ";
+    foreach($arrayXml['RECORD'] as $lvlOne){
+        echo "<tr>";
+        foreach($lvlOne as $xml){
+            echo "<td>" . $xml . "</td>";
         }
+        echo "</tr>";
     }
+
+
+//    if(!empty($_SESSION["searchSesh"])) {
+//        while ($rows = $result ->fetch_assoc()) {
+//            echo "
+//            <tr>
+//                <td>" . $rows['id'] . "</td>
+//                <td>" . $rows['label'] . "</td>
+//                <td>" . $rows['description'] . "</td>
+//            </tr>
+//            ";
+//        }
+//    }
     ?>
 
 
