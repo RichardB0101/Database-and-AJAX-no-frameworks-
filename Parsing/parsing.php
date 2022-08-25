@@ -46,10 +46,10 @@ if(!empty($_SESSION["searchSesh"])){
         <br><input type="text" placeholder="search" name="formSearch">
     </label>
     <button type="submit">Submit</button>
-</form action="ajax/insertDb.php" method="post">
+</form>
+
+<form action="ajax/insertDb.php" method="post">
     <br><button type="submit">Insert data to Eurovoc</button>
-<form >
-    button
 </form>
 
 <table class="table table-dark table-hover table-striped">

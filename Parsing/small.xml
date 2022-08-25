@@ -11,4 +11,33 @@
         <DESCRIPTEUR_ID>100</DESCRIPTEUR_ID>
         <LIBELLE>rasinis konfliktas</LIBELLE>
     </RECORD>
+    <RECORD>
+        <DESCRIPTEUR_ID>1000</DESCRIPTEUR_ID>
+        <LIBELLE>finansavimas</LIBELLE>
+    </RECORD>
+    <RECORD>
+        <DESCRIPTEUR_ID>1001</DESCRIPTEUR_ID>
+        <LIBELLE>trumpalaikis finansavimas</LIBELLE>
+    </RECORD>
+    <RECORD>
+        <DESCRIPTEUR_ID>1002</DESCRIPTEUR_ID>
+        <LIBELLE>ilgalaikis finansavimas</LIBELLE>
+    </RECORD>
+    <RECORD>
+        <DESCRIPTEUR_ID>1003</DESCRIPTEUR_ID>
+        <LIBELLE>vidutinės trukmės finansavimas</LIBELLE>
+    </RECORD>
+    <RECORD>
+        <DESCRIPTEUR_ID>1004</DESCRIPTEUR_ID>
+        <LIBELLE>gerovė</LIBELLE>
+    </RECORD>
+    <RECORD>
+        <DESCRIPTEUR_ID>1005</DESCRIPTEUR_ID>
+        <LIBELLE>ES finansavimas</LIBELLE>
+        <DEF>ES išlaidos, skirtos ES politikai įgyvendinti.</DEF>
+    </RECORD>
+    <RECORD>
+        <DESCRIPTEUR_ID>1006</DESCRIPTEUR_ID>
+        <LIBELLE>kompensacinis finansavimas</LIBELLE>
+    </RECORD>
 </DESCRIPTEUR>

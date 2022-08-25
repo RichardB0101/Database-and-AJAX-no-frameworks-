@@ -7,24 +7,30 @@ if ($conn->connect_errno) {
     die("DB ERROR : " . $conn->connect_error);
 }
 
-$search = $_POST['formSearch'];
-$_SESSION['searchSesh'] = $search;
 
-$i = 1;
 
+$xml = simplexml_load_file("../desc.xml");
+$jsonXml = json_encode($xml);
+$arrayXml = json_decode($jsonXml, TRUE);
 
 //$sqlInsert = "INSERT INTO `eurovoc`(`label`, `description`) VALUES ('savoka$i','lorem ipsum lorem ipsum')";
-
-
-for($i = 1; $i < 10; $i++){
-    if($conn->query("INSERT INTO `eurovoc`(`label`, `description`) VALUES ('savoka$i','lorem ipsum lorem ipsum')") === TRUE){
-        echo "New record created";
-    }else{
-        echo "Erorr creating record";
+foreach($arrayXml['RECORD'] as $lvlOne){
+    $counter = 0;
+    foreach($lvlOne as $xml){
+        $counter +=1;
+        switch ($counter){
+            case 1:
+                $conn->query("INSERT INTO `eurovoc`(`id`) VALUES ('$xml')");
+                break;
+            case 2:
+                $conn->query("INSERT INTO `eurovoc`(`label`) VALUES ('$xml')");
+                break;
+            case 3:
+                $conn->query("INSERT INTO `eurovoc`(`description`) VALUES ('$xml')");
+                break;
+        }
     }
 }
-
-
 
 header("Location: ../parsing.php");
 exit();
