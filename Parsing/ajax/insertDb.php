@@ -15,20 +15,13 @@ $arrayXml = json_decode($jsonXml, TRUE);
 
 //$sqlInsert = "INSERT INTO `eurovoc`(`label`, `description`) VALUES ('savoka$i','lorem ipsum lorem ipsum')";
 foreach($arrayXml['RECORD'] as $lvlOne){
-    $counter = 0;
-    foreach($lvlOne as $xml){
-        $counter +=1;
-        switch ($counter){
-            case 1:
-                $conn->query("INSERT INTO `eurovoc`(`id`) VALUES ('$xml')");
-                break;
-            case 2:
-                $conn->query("INSERT INTO `eurovoc`(`label`) VALUES ('$xml')");
-                break;
-            case 3:
-                $conn->query("INSERT INTO `eurovoc`(`description`) VALUES ('$xml')");
-                break;
-        }
+
+   $conn->query("INSERT INTO `eurovoc`(`id`, `label`) VALUES ('".$lvlOne['DESCRIPTEUR_ID']."', '".$lvlOne['LIBELLE']."')");
+
+    if(array_key_exists('DEF', $lvlOne)){
+        //$conn->query("INSERT INTO `eurovoc`(`description`) VALUES ('15') WHERE id = '".$lvlOne['DESCRIPTEUR_ID']."'");
+        //UPDATE `eurovoc` SET `description`='15' WHERE `id` = 1000
+        $conn->query("UPDATE `eurovoc` SET `description`='".$lvlOne['DEF']."' WHERE `id` =   ".$lvlOne['DESCRIPTEUR_ID']."  ");
     }
 }
 

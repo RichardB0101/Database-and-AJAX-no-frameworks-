@@ -19,11 +19,13 @@ require_once "ajax/config.php";
 $xml = simplexml_load_file("desc.xml");
 $jsonXml = json_encode($xml);
 $arrayXml = json_decode($jsonXml, TRUE);
-//Converting in 2 lines only because of simplicity, but not recommended, converts only one layer
-//$xml2 = simplexml_load_file("small.xml");
-//$arrayXml2 = (array)$xml2;
+
 ?>
 
+
+<?php
+//var_dump($arrayXml);
+?>
 
 <!--**************************debugging***************************-->
 <pre>
@@ -51,6 +53,9 @@ if(!empty($_SESSION["searchSesh"])){
 <form action="ajax/insertDb.php" method="post">
     <br><button type="submit">Insert data to Eurovoc</button>
 </form>
+<form action="ajax/truncateDb.php" method="post">
+    <br><button type="submit">Truncate table</button>
+</form>
 
 <table class="table table-dark table-hover table-striped">
     <tr>
@@ -58,46 +63,47 @@ if(!empty($_SESSION["searchSesh"])){
         <th>Savokos Pavadinimas</th>
         <th>Savokos alternatyva</th>
     </tr>
-
-
     <?php
-    //display EUROVOC xml without database
-    //    foreach ($arrayXml['RECORD'] as $lvlOne) {
-    //        echo "<tr>";
-    //        foreach ($lvlOne as $arrayz) {
-    //            echo "<td>" . $arrayz . "</td>";
-    //        }
-    //        echo "</tr>";
-    //    }
 
     $source = $_SESSION["searchSesh"];
     $sql = "SELECT * FROM `Eurovoc` WHERE (id = '$source') OR (label = '$source') OR (description = '$source')";
     $result = $conn -> query($sql);
 
-    foreach($arrayXml['RECORD'] as $lvlOne){
-        echo "<tr>";
-        foreach($lvlOne as $xml){
-            echo "<td>" . $xml . "</td>";
+
+
+
+    $query = "SELECT * FROM eurovoc";
+if(!$_SESSION["searchSesh"]){
+
+}
+else{
+    if ($result = $conn->query($query)) {
+
+        /* fetch associative array */
+        while ($row = $result->fetch_assoc()) {
+            echo '<tr> 
+                  <td>'.$row["id"].'</td> 
+                  <td>'.$row["label"].'</td> 
+                  <td>'.$row["description"].'</td> 
+              </tr>';
         }
-        echo "</tr>";
+        /* free result set */
+        $result->free();
     }
+}
 
 
-//    if(!empty($_SESSION["searchSesh"])) {
-//        while ($rows = $result ->fetch_assoc()) {
-//            echo "
-//            <tr>
-//                <td>" . $rows['id'] . "</td>
-//                <td>" . $rows['label'] . "</td>
-//                <td>" . $rows['description'] . "</td>
-//            </tr>
-//            ";
+
+
+
+//    foreach($arrayXml['RECORD'] as $lvlOne){
+//        echo "<tr>";
+//        foreach($lvlOne as $xml){
+//            echo "<td>" . $xml . "</td>";
 //        }
+//        echo "</tr>";
 //    }
-    ?>
-
-
-
+//    ?>
 </table>
 </body>
 
