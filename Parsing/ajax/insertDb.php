@@ -12,7 +12,7 @@ if ($conn->connect_errno) {
 $xml = simplexml_load_file("../desc.xml");
 $jsonXml = json_encode($xml);
 $arrayXml = json_decode($jsonXml, TRUE);
-
+$_SESSION['loaderStatus'] = true;
 //$sqlInsert = "INSERT INTO `eurovoc`(`label`, `description`) VALUES ('savoka$i','lorem ipsum lorem ipsum')";
 foreach($arrayXml['RECORD'] as $lvlOne){
 
@@ -25,7 +25,12 @@ foreach($arrayXml['RECORD'] as $lvlOne){
     }
 }
 
+
+
+
 header("Location: ../parsing.php");
+$_SESSION['insertStatus'] = true;
+unset($_SESSION['loaderStatus']);
 exit();
 
 //$sql = "USE `ajax` SELECT * FROM `eurovoc` WHERE 'id' = .$search . OR 'name' = .$search .OR 'description' = .$search";

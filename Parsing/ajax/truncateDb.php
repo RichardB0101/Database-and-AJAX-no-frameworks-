@@ -8,5 +8,5 @@ if ($conn->connect_errno) {
 $conn->query("TRUNCATE `eurovoc`");
 
 header("Location: ../parsing.php");
+$_SESSION['truncateStatus'] = true;
 exit();
-
